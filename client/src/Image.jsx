@@ -38,7 +38,11 @@ const Image = () => {
     <div className='w-full h-screen bg-pink-300 flex'>
         <div className='max-w-[80%] w-full m-auto flex flex-col gap-10 items-center justify-center'>
             <h1 className='text-2xl sm:text-4xl font-[900] text-[#ca0b2b] text-center sm:text-left'>Generate Image Using AI</h1>
+             {loading ? (
+                <div className='w-[500px] h-[500px] bg-[pink] rounded-lg flex items-center justify-center'>Loading...</div>
+            ) : (
             <img width={500} src={generatedImage || 'girl.webp'} alt="girl" className='rounded-lg '/>
+            )}
             <button
                     onClick={handleDownload}
                     className='px-4 py-2 rounded-lg bg-[#eb89b7] text-2xl font-bold text-[#a84d5d]'
