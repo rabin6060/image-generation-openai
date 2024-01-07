@@ -6,15 +6,26 @@ import cors from 'cors'
 dotenv.config()
 
 const app = express()
+app.use(express.json())
 app.use(cors({
     origin:'http://localhost:5173'
 }))
-
+app.post('/test',(req,res)=>{
+    try {
+            const {prompt} = req.body
+            if(!prompt) return res.status(500).json('not found')
+            res.status(200).json(prompt)
+    } catch (error) {
+            res.status(500).json('not found')
+    }
+   
+})
 app.post('/image-generate',async (req,res)=>{
     try {
+        const {prompt} = req.body
         const image = await openai.images.generate({
         model:'dall-e-2',
-        prompt:'batman'
+        prompt:prompt
         });
        
         if (!image.data) {
