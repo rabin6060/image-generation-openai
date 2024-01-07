@@ -1,10 +1,14 @@
 import express from 'express'
 import { openai } from './openai.js'
 import dotenv from 'dotenv'
+import cors from 'cors'
+
 dotenv.config()
 
 const app = express()
-
+app.use(cors({
+    origin:'http://localhost:5173'
+}))
 
 app.post('/image-generate',async (req,res)=>{
     try {
