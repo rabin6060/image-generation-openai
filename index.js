@@ -6,7 +6,7 @@ dotenv.config()
 const app = express()
 
 
-app.post('/image',async (req,res)=>{
+app.post('/image-generate',async (req,res)=>{
     try {
         const image = await openai.images.generate({
         model:'dall-e-2',
